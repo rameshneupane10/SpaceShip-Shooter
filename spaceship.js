@@ -2,11 +2,13 @@ const canvas =document.getElementById("canvas");
 const c=canvas.getContext("2d");
 
 const player = new Player();
+const bullet = new Bullet();
  
 function animate()
 {
     c.clearRect(0,0,canvas.width,canvas.height);
     player.update();
+    bullet.update();
     requestAnimationFrame(animate);
 }
 animate();
