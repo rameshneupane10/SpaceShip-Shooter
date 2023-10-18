@@ -1,16 +1,16 @@
 class Bullet
 {
-    constructor()
+    constructor(x=0,y=0)
     {
         this.position={
 
-            x:player.position.x,
-            y:player.position.y-20,
+            x:x,
+            y:y,
         };
 
         this.velocity={
-            x:0,
-            y:0,
+            x:1,
+            y:-10,
 
         };
         
@@ -32,7 +32,7 @@ class Bullet
 
     move()
     {
-
+        this.position.y+=this.velocity.y;
     }
 
     update()
