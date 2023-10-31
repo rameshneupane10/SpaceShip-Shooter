@@ -13,8 +13,9 @@ class Bullet
             y:-10,
 
         };
-        
-        this.size=15;
+        this.image= new Image();
+        this.image.src="./bullet.png"
+        this.size=35;
     }
 
 
@@ -22,7 +23,8 @@ class Bullet
     {
         c.beginPath();
         c.fillStyle="white";
-        c.fillRect(
+        c.drawImage(
+            this.image,
             this.position.x,
             this.position.y,
             this.size,
@@ -37,6 +39,11 @@ class Bullet
 
     update()
     {
-        this.draw();
+        if(player.isAlive)
+        {
+            this.draw();
+            this.move();
+        }
+       
     }
 }

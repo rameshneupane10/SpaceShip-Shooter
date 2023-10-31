@@ -10,16 +10,19 @@ class Player {
         x: 0,
         y: 0,
       };
-  
+      
+      this.image = new Image();
+      this.image.src="./ship3.png";
       this.isAlive = true;
-      this.size = 50;
+      this.size = 55;
     
     }
   
     draw() {
       c.beginPath();
       c.fillStyle = "red";
-      c.fillRect(
+      c.drawImage(
+        this.image,
         this.position.x,
         this.position.y,
         this.size,
