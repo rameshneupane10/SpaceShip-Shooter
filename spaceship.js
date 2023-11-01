@@ -1,5 +1,13 @@
 const canvas =document.getElementById("canvas");
 const c=canvas.getContext("2d");
+let sound = document.getElementById("sound");
+
+const backgroundMusic = new Audio();
+backgroundMusic.src = "./tenefo-73435.mp3";
+
+const bulletSound = new Audio();
+bulletSound.src = "./22-caliber-with-ricochet-39679.mp3";
+bulletSound.volume = 0.5;
 
 const player = new Player();
 let Score=0;
@@ -11,6 +19,9 @@ setInterval(() => {
   enemies.push(enemy);
 }, 2000);
 
+
+ alert("ARROWS for movement and SPACE for bullets");
+
  
 function animate()
 {
@@ -18,6 +29,10 @@ function animate()
     const space=new Image();
     space.src="./Starset.png";
     c.drawImage(space,0,0,canvas.width,canvas.height);
+
+    backgroundMusic.play();
+    backgroundMusic.loop = true;
+    backgroundMusic.volume = 0.3;
 
     player.update();
     for (let i = 0; i < enemies.length; i++) {
@@ -53,9 +68,13 @@ document.addEventListener("keydown",(e)=>
   if(e.code ==="ArrowLeft") player.velocity.x =  -5;
   if(e.code ==="ArrowRight")  player.velocity.x=5;
   if (e.code === "Space")
+  {
   allBullets.push(
     new Bullet(player.position.x + player.size / 2.8, player.position.y)
+    
   );
+  bulletSound.play()
+  }
 });
 
 document.addEventListener("keyup",(e)=>
